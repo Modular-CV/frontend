@@ -1,4 +1,6 @@
 .react-router
+.yarn
+.husky
 build
 node_modules
 README.md

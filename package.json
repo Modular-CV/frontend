@@ -13,7 +13,8 @@
     "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "lint": "echo echo Running Eslint 😉 && yarn eslint",
-    "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error"
+    "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error",
+    "docker:build": "docker build -t app ."
   },
   "dependencies": {
     "@react-router/node": "^7.1.1",

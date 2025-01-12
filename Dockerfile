@@ -1,9 +1,7 @@
-FROM node:21-alpine3.19
+FROM node:23-alpine3.20
 WORKDIR /app
 COPY yarn.lock package.json ./
-RUN corepack enable
-RUN corepack use yarn@latest
+RUN corepack enable && corepack use yarn@latest
+COPY . ./
 RUN yarn install
-COPY . .
-EXPOSE 3000
 CMD ["yarn", "dev", "--host", "0.0.0.0"]

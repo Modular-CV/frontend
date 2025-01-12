@@ -1,0 +1,5 @@
+services:
+  app:
+    image: 'app'
+    ports:
+      - 8000:5173
