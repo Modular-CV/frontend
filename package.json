@@ -14,12 +14,14 @@
     "typecheck": "react-router typegen && tsc",
     "lint": "echo echo Running Eslint 😉 && yarn eslint",
     "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error",
-    "docker:build": "docker build -t app ."
+    "docker:build": "docker build -t app .",
+    "vitest": "vitest --config ./tests/vitest/config.ts"
   },
   "dependencies": {
     "@react-router/node": "^7.1.1",
     "@react-router/serve": "^7.1.1",
     "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
     "cross-env": "^7.0.3",
     "i18next": "^24.2.1",
     "isbot": "^5.1.17",
@@ -53,7 +55,8 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.19.1",
     "vite": "^5.4.11",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
   },
   "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
