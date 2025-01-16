@@ -15,7 +15,8 @@
     "lint": "echo echo Running Eslint 😉 && yarn eslint",
     "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error",
     "docker:build": "docker build -t app .",
-    "vitest": "vitest --config ./tests/vitest/config.ts"
+    "vitest": "vitest --config ./tests/vitest/config.ts",
+    "cypress:open": "yarn cypress open --config-file ./tests/cypress/cypress.config.ts"
   },
   "dependencies": {
     "@react-router/node": "^7.1.1",

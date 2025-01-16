@@ -19,7 +19,7 @@ import './commands'
 import React from 'react'
 import { mount } from 'cypress/react18'
 import { MemoryRouter } from 'react-router'
-import '../../app/app.css'
+import '../../../app/app.css'
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
