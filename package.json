@@ -16,7 +16,8 @@
     "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error",
     "docker:build": "docker build -t app .",
     "vitest": "vitest --config ./tests/vitest/config.ts",
-    "cypress:open": "yarn cypress open --config-file ./tests/cypress/cypress.config.ts"
+    "cypress:open": "yarn tailwind:watch & yarn cypress open --config-file ./tests/cypress/cypress.config.ts",
+    "tailwind:watch": "yarn tailwindcss -i ./app/app.css -o ./tests/cypress/support/tailwind.css --watch"
   },
   "dependencies": {
     "@react-router/node": "^7.1.1",

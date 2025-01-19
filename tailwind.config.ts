@@ -1,7 +1,12 @@
 import type { Config } from 'tailwindcss'
+import forms from '@tailwindcss/forms'
+import typography from '@tailwindcss/typography'
 
 export default {
-  content: ['./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}',
+    './tests/cypress/support/**/*.{html, tsx}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -18,5 +23,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [forms, typography],
 } satisfies Config

@@ -11,3 +11,6 @@
 # React Router
 /.react-router/
 /build/
+
+# Tailwind
+tests/cypress/support/tailwind.css
