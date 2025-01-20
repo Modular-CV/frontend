@@ -7,12 +7,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router'
-
 import type { Route } from './+types/root'
 import stylesheet from './app.css?url'
 import { Provider } from 'react-redux'
 import store from './store'
-import './configs/i18n'
+import i18n from './configs/i18n'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -44,6 +43,20 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       </body>
     </html>
   )
+}
+
+/*
+ * Await for i18n before loading the component
+ * https://reactrouter.com/how-to/client-data
+ */
+export const clientLoader = async () => {
+  // Await to finish loading
+  await i18n.init()
+}
+
+// If we need to display a loading
+export const HydrateFallback = () => {
+  // return <div>Loading</div>
 }
 
 export const App = () => {
