@@ -19,7 +19,10 @@ import './commands'
 import React from 'react'
 import { mount } from 'cypress/react18'
 import { MemoryRouter } from 'react-router'
+import i18n from '~/configs/i18n'
 import './tailwind.css'
+
+i18n.init('http://localhost:5000/__cypress/iframes')
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
