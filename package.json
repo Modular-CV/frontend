@@ -16,7 +16,7 @@
     "format": "echo Running Prettier 😮 && yarn prettier --write . --log-level error",
     "docker:build": "docker build -t app .",
     "vitest": "vitest --config ./tests/vitest/config.ts",
-    "cypress:open": "yarn tailwind:watch & yarn cypress open --config-file ./tests/cypress/cypress.config.ts",
+    "cypress:open": "yarn tailwind:watch & yarn cypress open --config-file ./tests/cypress/config.ts",
     "tailwind:watch": "yarn tailwindcss -i ./app/app.css -o ./tests/cypress/support/tailwind.css --watch"
   },
   "dependencies": {
@@ -30,19 +30,22 @@
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.1",
     "isbot": "^5.1.17",
+    "js-cookie": "^3.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-i18next": "^15.4.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.1.1",
-    "zod": "^3.24.1"
+    "react-toastify": "^11.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@faker-js/faker": "^9.4.0",
     "@react-router/dev": "^7.1.1",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/js-cookie": "^3",
     "@types/node": "^20",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
