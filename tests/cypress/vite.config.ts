@@ -5,6 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import react from '@vitejs/plugin-react'
 
 const config = defineConfig({
+  mode: 'test',
   css: {
     postcss: {
       plugins: [tailwindcss, autoprefixer],

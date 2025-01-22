@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress'
-import viteConfig from './cypress.vite.config'
+import viteConfig from './vite.config'
 
 export default defineConfig({
   port: 5000,
