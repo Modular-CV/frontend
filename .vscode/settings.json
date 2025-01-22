@@ -1,4 +1,14 @@
 {
   "i18n-ally.localesPaths": ["public/locales"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "en-US",
+  "i18n-ally.displayLanguage": "en-US",
+
+  "tailwindCSS.includeLanguages": {
+    "typescript": "css"
+  },
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
