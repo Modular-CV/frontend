@@ -4,6 +4,7 @@ import LanguageDetector, {
 } from 'i18next-browser-languagedetector'
 import Backend, { type HttpBackendOptions } from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
+import { Language } from '~/types'
 
 const viteOrigin = import.meta.env.VITE_ORIGIN
 
@@ -24,7 +25,7 @@ const i18n = () => {
       .use(LanguageDetector)
       .use(initReactI18next)
       .init<HttpBackendOptions & DetectorOptions>({
-        supportedLngs: ['en-US', 'pt-BR'],
+        supportedLngs: Object.keys(Language),
         load: 'currentOnly',
         fallbackLng: 'en-US',
         backend: {
