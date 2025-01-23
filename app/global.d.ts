@@ -15,11 +15,11 @@ declare global {
   type ApiResponseStatus = 'SUCCESS' | 'ERROR'
 
   type ApiResponse<
-    Property extends string = undefined,
+    Property extends string | undefined = undefined,
     DataType = undefined,
   > = {
     status: ApiResponseStatus
-    data?: { [key in Property]: DataType }
+    data?: Property extends string ? { [key in Property]: DataType } : never
     message?: string
     error?: ErrorCode
   }
