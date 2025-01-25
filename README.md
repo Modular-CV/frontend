@@ -15,6 +15,7 @@ This is the frontend for a curriculum builder project: a modular and free-to-use
 ### Test
 
 [<img src="https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e">](https://www.cypress.io/)
+[<img src="https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B">](https://vitest.dev/)
 
 ### Linting and Formatting
 
@@ -33,6 +34,12 @@ This is the frontend for a curriculum builder project: a modular and free-to-use
 [<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">](https://reactrouter.com/)
 [<img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">](https://tailwindcss.com/)
 
+- [Axios](https://axios-http.com/docs/intro) 🚂
+- [I18n](https://react.i18next.com/) 🧾
+- [Faker](https://fakerjs.dev/) 🪄
+- [Husky](https://typicode.github.io/husky/) 🐶
+- [Motion](https://motion.dev/)🏍️
+
 ### Recommended extensions for VS Code
 
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) ✍️
@@ -40,9 +47,11 @@ This is the frontend for a curriculum builder project: a modular and free-to-use
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 🛠️
 - [GitHub Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) 🔗
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) 🔍
+- [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally) 📔
 - [Postman](https://marketplace.visualstudio.com/items?itemName=Postman.postman-for-vscode) 📫
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 🌸
 - [Tailwind CSS](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) 🎨
+- [Vitest](https://marketplace.visualstudio.com/items?itemName=vitest.explorer)
 - [WSL](https://code.visualstudio.com/docs/remote/wsl) 🖥️
 
 > [!NOTE]
