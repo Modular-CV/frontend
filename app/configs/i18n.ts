@@ -41,7 +41,7 @@ const i18n = () => {
 
   return {
     init,
-    get() {
+    get t() {
       return i18n
     },
   }
