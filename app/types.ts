@@ -12,6 +12,7 @@ export const ErrorCode = {
   'ACC-001': 'Email is already registered',
   'ACC-002': 'Email could not be sent',
   'VER-001': 'Verification token is invalid, expired or used',
+  'API-001': 'API down',
 } as const
 
 export const Language = {

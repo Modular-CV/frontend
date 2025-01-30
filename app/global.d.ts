@@ -1,5 +1,5 @@
-import type { ErrorCode } from 'react-i18next'
 import type { InputStyle, ButtonStyle, Language } from './types'
+import { ErrorCode } from './types'
 
 declare global {
   type LoginForm = {
@@ -15,13 +15,12 @@ declare global {
   type ApiResponseStatus = 'SUCCESS' | 'ERROR'
 
   type ApiResponse<
-    Property extends string | undefined = undefined,
-    DataType = undefined,
+    Property extends Record<string, unknown> | undefined = undefined,
   > = {
     status: ApiResponseStatus
-    data?: Property extends string ? { [key in Property]: DataType } : never
+    data?: Property extends undefined ? never : Property
     message?: string
-    error?: ErrorCode
+    error?: ErrorCodeKey
   }
 
   type Account = {
@@ -32,9 +31,21 @@ declare global {
     updatedAt: Date | string
   }
 
-  type InputStyleValues = (typeof InputStyle)[keyof typeof InputStyle]
+  type SessionTokens = {
+    accessToken: string
+    refreshToken: string
+  }
 
-  type ButtonStyleValues = (typeof ButtonStyle)[keyof typeof ButtonStyle]
+  type InputStyleValue = (typeof InputStyle)[keyof typeof InputStyle]
 
-  type LanguageKeys = keyof typeof Language
+  type ButtonStyleValue = (typeof ButtonStyle)[keyof typeof ButtonStyle]
+
+  type LanguageKey = keyof typeof Language
+
+  type ErrorCodeKey = keyof typeof ErrorCode
+
+  type SessionData = {
+    accessToken?: string
+    refreshToken?: string
+  }
 }
