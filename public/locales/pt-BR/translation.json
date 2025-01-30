@@ -1,5 +1,27 @@
 {
+  "error": {
+    "invalidAuth": "Email inválido ou senha",
+    "somethingWrong": "Algo deu errado"
+  },
+  "form": {
+    "error": {
+      "field": {
+        "invalidEmail": "E-mail inválido",
+        "required": "Obrigatório"
+      }
+    }
+  },
   "login": {
+    "createAccount": "Criar uma conta",
+    "email": "E-mail",
+    "login": "Conecte-se",
+    "password": "Senha",
     "welcome": "Bem-vindo!"
+  },
+  "loginForm": {
+    "checking": "Verificando... Espere!",
+    "email": "E-mail",
+    "login": "Conecte-se",
+    "password": "Senha"
   }
 }

@@ -1,5 +1,27 @@
 {
   "login": {
-    "welcome": "Welcome!"
+    "welcome": "Welcome!",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "createAccount": "Create Account"
+  },
+  "loginForm": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "checking": "Checking... Hold on!"
+  },
+  "form": {
+    "error": {
+      "field": {
+        "required": "Required",
+        "invalidEmail": "Invalid Email"
+      }
+    }
+  },
+  "error": {
+    "invalidAuth": "Invalid email or password",
+    "somethingWrong": "Something went wrong"
   }
 }
