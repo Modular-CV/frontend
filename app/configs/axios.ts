@@ -1,8 +1,9 @@
-import _axios from 'axios'
+import axios from 'axios'
 
-const axios = _axios.create({
+const axiosInstance = axios.create({
+  withCredentials: true,
   baseURL: import.meta.env.VITE_API_URL,
   validateStatus: () => true,
 })
 
-export default axios
+export default axiosInstance
