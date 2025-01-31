@@ -1,6 +1,15 @@
 import { type MemoryRouterProps } from 'react-router'
 import type { MountOptions, MountReturn } from 'cypress/react'
 
+type CyGetOptions =
+  | Partial<
+      Cypress.Loggable &
+        Cypress.Timeoutable &
+        Cypress.Withinable &
+        Cypress.Shadow
+    >
+  | undefined
+
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -12,7 +21,9 @@ declare global {
       mount(
         component: React.ReactNode,
         options?: MountOptions & { routerProps?: MemoryRouterProps },
-      ): Cypress.Chainable<MountReturn>
+      ): Chainable<MountReturn>
+
+      getBySel(selector: string, options?: CyGetOptions): Chainable
     }
   }
 }
