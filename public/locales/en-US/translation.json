@@ -22,6 +22,8 @@
   },
   "error": {
     "invalidAuth": "Invalid email or password",
-    "somethingWrong": "Something went wrong"
+    "somethingWrong": "Something went wrong",
+    "accessTokenMissing": "Access token is missing",
+    "invalidRefreshToken": "Refresh token is invalid"
   }
 }

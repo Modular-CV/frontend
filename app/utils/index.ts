@@ -8,8 +8,14 @@ export const errorHandler = async (errorCode: ErrorCodeKey) => {
   if (!t) throw new Error('i18n not initialized')
 
   switch (errorCode) {
+    case 'AUTH-001': {
+      return t('error.accessTokenMissing')
+    }
     case 'AUTH-003': {
       return t('error.invalidAuth')
+    }
+    case 'AUTH-007': {
+      return t('error.invalidRefreshToken')
     }
     default: {
       return `${t('error.somethingWrong')} / Error code: ${errorCode}`
@@ -21,3 +27,17 @@ export const sleep = (time: number) =>
   new Promise((resolve) => {
     setTimeout(resolve, time)
   })
+
+export const getCookies = (headers: Headers) => {
+  const cookies = new Map<string, string>()
+
+  headers
+    .get('cookie')
+    ?.split('; ')
+    .forEach((cookie) => {
+      const [key] = cookie.split('=')
+      cookies.set(key, cookie)
+    })
+
+  return cookies
+}
