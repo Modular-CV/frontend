@@ -9,6 +9,24 @@ type LanguageListProps = {
   onListitemClick: (language: string) => void
 }
 
+const LanguageList = ({ languages, onListitemClick }: LanguageListProps) => {
+  return languages.map((language) => (
+    <motion.ul
+      className="flex flex-col justify-center rounded-md border p-2 shadow-md w-fit absolute top-full mt-1 bg-white"
+      key={language}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+    >
+      <li>
+        <Button className="w-full" onClick={() => onListitemClick(language)}>
+          {Language[language as LanguageKey]}
+        </Button>
+      </li>
+    </motion.ul>
+  ))
+}
+
 const LanguagePicker = () => {
   const { i18n } = useTranslation()
   const [isLanguageListHidden, setIsLanguageListHidden] = useState(true)
@@ -32,7 +50,7 @@ const LanguagePicker = () => {
     i18n.changeLanguage(language)
   }
 
-  const handleWindowClick = async (event: MouseEvent) => {
+  const handleDocumentClick = async (event: MouseEvent) => {
     if (!languageSwitchRef.current) return
     const languageSwitch = languageSwitchRef.current
     const target = event.target as Node
@@ -41,19 +59,25 @@ const LanguagePicker = () => {
 
   const handleDocumentClickEventListener = () => {
     if (!isLanguageListHidden)
-      document.addEventListener('click', handleWindowClick)
-    else document.removeEventListener('click', handleWindowClick)
+      document.addEventListener('click', handleDocumentClick)
+    else document.removeEventListener('click', handleDocumentClick)
 
     return () => {
-      document.removeEventListener('click', handleWindowClick)
+      document.removeEventListener('click', handleDocumentClick)
     }
   }
 
   useEffect(handleDocumentClickEventListener, [isLanguageListHidden])
 
   return (
-    <div className="flex flex-col gap-2" ref={languageSwitchRef}>
-      <Button onClick={handleLanguageList}>
+    <div
+      className="flex flex-col gap-2 items-center relative"
+      ref={languageSwitchRef}
+    >
+      <Button
+        onClick={handleLanguageList}
+        className="underline underline-offset-2"
+      >
         {Language[currentLanguage as LanguageKey]}
       </Button>
       <AnimatePresence>
@@ -67,29 +91,6 @@ const LanguagePicker = () => {
       </AnimatePresence>
     </div>
   )
-}
-
-const LanguageList = ({ languages, onListitemClick }: LanguageListProps) => {
-  return languages.map((language) => (
-    <motion.ul
-      className="flex flex-col justify-center rounded-md border p-2 shadow-md"
-      key={language}
-      animate={{
-        scale: [0, 1],
-        transition: { ease: ['easeIn', 'easeOut'], duration: 0.05 },
-      }}
-      exit={{
-        scale: [1, 0],
-        transition: { ease: ['easeIn', 'easeOut'], duration: 0.05 },
-      }}
-    >
-      <li>
-        <Button className="w-full" onClick={() => onListitemClick(language)}>
-          {Language[language as LanguageKey]}
-        </Button>
-      </li>
-    </motion.ul>
-  ))
 }
 
 export default LanguagePicker
