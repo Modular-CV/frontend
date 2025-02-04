@@ -23,6 +23,15 @@ declare global {
     error?: ErrorCodeKey
   }
 
+  type JwtPayload = {
+    account: {
+      id: string
+      email: string
+    }
+    iat: number
+    exp: number
+  }
+
   type Account = {
     id: string
     email: string
