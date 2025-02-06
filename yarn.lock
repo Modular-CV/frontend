@@ -1126,6 +1126,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-router/fs-routes@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "@react-router/fs-routes@npm:7.1.5"
+  dependencies:
+    minimatch: "npm:^9.0.0"
+  peerDependencies:
+    "@react-router/dev": ^7.1.5
+    typescript: ^5.1.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/53eb22d460c12d86015eb04da62b2b292df1facd8cb3152a85ce794593daef8b1df7b56a75ee8ae5bcb8e4603459d2f3794b6498f4264a942836b73d51470bef
+  languageName: node
+  linkType: hard
+
 "@react-router/node@npm:7.1.1, @react-router/node@npm:^7.1.1":
   version: 7.1.1
   resolution: "@react-router/node@npm:7.1.1"
@@ -3856,6 +3871,7 @@ __metadata:
     "@faker-js/faker": "npm:^9.4.0"
     "@hookform/resolvers": "npm:^3.10.0"
     "@react-router/dev": "npm:^7.1.1"
+    "@react-router/fs-routes": "npm:^7.1.5"
     "@react-router/node": "npm:^7.1.1"
     "@react-router/serve": "npm:^7.1.1"
     "@reduxjs/toolkit": "npm:^2.5.0"
@@ -5277,7 +5293,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.4":
+"minimatch@npm:^9.0.0, minimatch@npm:^9.0.4":
   version: 9.0.5
   resolution: "minimatch@npm:9.0.5"
   dependencies:
