@@ -81,6 +81,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '',
+          },
+        },
+      },
       fontFamily: {
         sans: [
           '"Inter"',
