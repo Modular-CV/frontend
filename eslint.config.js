@@ -8,12 +8,16 @@ import unusedImports from 'eslint-plugin-unused-imports'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
+    ignores: ['build', '.react-router'],
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     plugins: {
       'unused-imports': unusedImports,
     },
     rules: {
       'unused-imports/no-unused-imports': 'error',
+      'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     },
     settings: {
       react: {
@@ -31,7 +35,4 @@ export default [
     },
   },
   eslintPluginPrettierRecommended,
-  {
-    ignores: ['.react-router/**/*'],
-  },
 ]
