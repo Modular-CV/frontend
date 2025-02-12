@@ -57,12 +57,31 @@ const createAccount = async (createAccountInput: CreateAccountForm) => {
   return responseHandler(response)
 }
 
+const getMyResumes = async (accessToken?: string) => {
+  const response = await axiosInstance.get<ApiResponse<{ resumes: Resume[] }>>(
+    '/my/resumes',
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+  )
+  return responseHandler(response)
+}
+
+const postTitle = async (data: Partial<TitleInput>, accessToken?: string) => {
+  const response = await axiosInstance.post<ApiResponse<{ resume: Resume }>>(
+    '/my/resumes',
+    data,
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+  )
+  return responseHandler(response)
+}
+
 const apiCall = {
   createAccount,
   mySession,
   login,
   logout,
   refreshSession,
+  getMyResumes,
+  postTitle,
 }
 
 export default apiCall
