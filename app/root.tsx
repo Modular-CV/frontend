@@ -9,8 +9,6 @@ import {
 } from 'react-router'
 import type { Route } from './+types/root'
 import stylesheet from './app.css?url'
-import { Provider } from 'react-redux'
-import store from './store'
 import i18n from './configs/i18n'
 
 export const links: Route.LinksFunction = () => [
@@ -45,26 +43,14 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-/*
- * Await for i18n before loading the component
- * https://reactrouter.com/how-to/client-data
- */
 export const clientLoader = async () => {
-  // Await to finish loading
   await i18n.init()
 }
 
-// If we need to display a loading
-export const HydrateFallback = () => {
-  // return <div>Loading</div>
-}
+export const HydrateFallback = () => {}
 
 export const App = () => {
-  return (
-    <Provider store={store}>
-      <Outlet />
-    </Provider>
-  )
+  return <Outlet />
 }
 
 export const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps) => {
