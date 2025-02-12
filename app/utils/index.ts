@@ -1,4 +1,5 @@
 import i18n from '~/configs/i18n'
+import apiCall from './api'
 
 export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -28,16 +29,73 @@ export const sleep = (time: number) =>
     setTimeout(resolve, time)
   })
 
-export const getCookies = (headers: Headers) => {
+export const getTokens = async (headers: Headers) => {
   const cookies = new Map<string, string>()
+  let setCookie: string[] | undefined
+  let error: ErrorCodeKey | undefined
 
   headers
     .get('cookie')
     ?.split('; ')
     .forEach((cookie) => {
-      const [key] = cookie.split('=')
-      cookies.set(key, cookie)
+      const [key, value] = cookie.split('=')
+      if (['accessToken', 'refreshToken'].includes(key)) cookies.set(key, value)
     })
 
-  return cookies
+  let accessToken = cookies.get('accessToken')
+  let refreshToken = cookies.get('refreshToken')
+
+  if (!isTokenValid(accessToken) && refreshToken) {
+    const {
+      response,
+      data,
+      error: responseError,
+    } = await apiCall.refreshSession(refreshToken)
+
+    error = responseError
+
+    accessToken = data?.tokens.accessToken
+    refreshToken = data?.tokens.refreshToken
+
+    setCookie = response.headers['set-cookie']
+  } else if (!refreshToken) error = 'AUTH-006'
+
+  const get = (cookie: string) => {
+    return cookies.get(cookie)
+  }
+
+  const accessTokenPayload = getTokenPayload(accessToken)
+
+  return {
+    get,
+    accessToken,
+    refreshToken,
+    setCookie,
+    accessTokenPayload,
+    error,
+  }
+}
+
+const getTokenPayload = (token?: string) => {
+  if (!token) return
+
+  const data = token.split('.')[1]
+
+  if (!data) return
+
+  const payload = JSON.parse(atob(data)) as JwtPayload
+
+  return payload
+}
+
+const isTokenValid = (token?: string): boolean => {
+  const payload = getTokenPayload(token)
+
+  if (!payload) return false
+
+  const expiry = payload.exp * 1000
+
+  const isExpired = Date.now() >= expiry
+
+  return !isExpired
 }

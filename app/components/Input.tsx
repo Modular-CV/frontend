@@ -7,7 +7,13 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = (props: Props) => {
-  const { label, error, className, inputStyle, ...inputProps } = props
+  const {
+    label,
+    error,
+    className,
+    inputStyle = 'primary',
+    ...inputProps
+  } = props
 
   return (
     <div className="flex flex-col gap-1 mb-1">

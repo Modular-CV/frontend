@@ -2,6 +2,25 @@ import type { InputStyle, ButtonStyle, Language } from './types'
 import { ErrorCode } from './types'
 
 declare global {
+  type ResumeFormId = 'TITLE_FORM'
+
+  interface Form extends Record<string, string> {
+    formId: ResumeFormId
+  }
+
+  interface TitleForm extends Form {
+    formId: 'TITLE_FORM'
+    title: string
+  }
+
+  interface ProfileForm extends Form {
+    fullName: string
+  }
+
+  type TitleInput = {
+    title: string
+  }
+
   type LoginForm = {
     email: string
     password: string
@@ -38,6 +57,11 @@ declare global {
     isVerified: boolean
     createdAt: Date | string
     updatedAt: Date | string
+  }
+
+  type Resume = {
+    id: string
+    title: string
   }
 
   type SessionTokens = {

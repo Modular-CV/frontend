@@ -12,7 +12,8 @@ import {
 } from 'react-router'
 import apiCall from '~/utils/api'
 import { errorHandler, sleep } from '~/utils'
-import type { Route } from './+types/login'
+import type { Route } from './+types/route'
+import loader from './loader'
 
 export const action = async ({ request }: ClientActionFunctionArgs) => {
   const formData = await request.formData()
@@ -87,5 +88,7 @@ const Login = ({ actionData }: Route.ComponentProps) => {
     </Fragment>
   )
 }
+
+export { loader }
 
 export default Login
