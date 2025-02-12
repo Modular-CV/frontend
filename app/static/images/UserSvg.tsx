@@ -8,7 +8,7 @@ const UserSvg = (props: React.SVGProps<SVGSVGElement>) => (
     viewBox="0 0 24 24"
     {...props}
   >
-    <path fill="#fff" d="M0 0h24v24H0z" />
+    <path fill="transparent" d="M0 0h24v24H0z" />
     <path
       fill="#323232"
       fillRule="evenodd"
