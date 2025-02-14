@@ -74,6 +74,18 @@ const postTitle = async (data: Partial<TitleInput>, accessToken?: string) => {
   return responseHandler(response)
 }
 
+const postProfile = async (
+  data: Partial<ProfileInput>,
+  accessToken?: string,
+) => {
+  const response = await axiosInstance.post<ApiResponse<{ profile: Profile }>>(
+    '/my/profiles',
+    data,
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+  )
+  return responseHandler(response)
+}
+
 const apiCall = {
   createAccount,
   mySession,
@@ -82,6 +94,7 @@ const apiCall = {
   refreshSession,
   getMyResumes,
   postTitle,
+  postProfile,
 }
 
 export default apiCall
