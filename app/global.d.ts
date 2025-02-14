@@ -2,7 +2,7 @@ import type { InputStyle, ButtonStyle, Language } from './types'
 import { ErrorCode } from './types'
 
 declare global {
-  type ResumeFormId = 'TITLE_FORM'
+  type ResumeFormId = 'TITLE_FORM' | 'PROFILE_FORM'
 
   interface Form extends Record<string, string> {
     formId: ResumeFormId
@@ -14,7 +14,32 @@ declare global {
   }
 
   interface ProfileForm extends Form {
+    formId: 'PROFILE_FORM'
     fullName: string
+    jobTitle: string
+    email: string
+    phone: string
+    address: string
+  }
+
+  type ProfileInput = {
+    fullName: string
+    jobTitle?: string
+    email?: string
+    phone?: string
+    address?: string
+  }
+
+  type Profile = {
+    id: string
+    accountId: string
+    fullName: string
+    jobTitle: string
+    email: string
+    phone: string
+    address: string
+    createdAt: string
+    updatedAt: string
   }
 
   type TitleInput = {
