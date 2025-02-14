@@ -1,8 +1,8 @@
 import React from 'react'
 import {
   data,
-  type ActionFunctionArgs,
-  type LoaderFunctionArgs,
+  type ClientActionFunctionArgs,
+  type ClientLoaderFunctionArgs,
 } from 'react-router'
 import ResumeForm from '~/components/ResumeForm'
 import { getTokens } from '~/utils'
@@ -12,29 +12,10 @@ import Resumes from '~/components/Resumes'
 
 type View = 'NEW' | 'LIST' | 'ID'
 
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const { accessToken } = await getTokens(request.headers)
-
-  const formData = await request.formData()
-
-  const formId: ResumeFormId | null = formData.get('formId') as ResumeFormId
-
-  switch (formId) {
-    case 'TITLE_FORM': {
-      const data = {
-        title: formData.get('title')?.toString(),
-      }
-
-      const { error } = await apiCall.postTitle(data, accessToken)
-
-      if (error) console.error(error)
-
-      break
-    }
-  }
-}
-
-export const loader = async ({ request, params }: LoaderFunctionArgs) => {
+export const clientLoader = async ({
+  request,
+  params,
+}: ClientLoaderFunctionArgs) => {
   const { accessToken } = await getTokens(request.headers)
 
   const { data: outData } = await apiCall.getMyResumes(accessToken)
@@ -47,6 +28,44 @@ export const loader = async ({ request, params }: LoaderFunctionArgs) => {
   return data({ ...outData, view })
 }
 
+export const clientAction = async ({ request }: ClientActionFunctionArgs) => {
+  const { accessToken } = await getTokens(request.headers)
+
+  const formData = await request.formData()
+
+  const formId: ResumeFormId | null = formData.get('formId') as ResumeFormId
+
+  switch (formId) {
+    case 'TITLE_FORM': {
+      const data: Partial<TitleInput> = {
+        title: formData.get('title')?.toString(),
+      }
+
+      const { error } = await apiCall.postTitle(data, accessToken)
+
+      if (error) console.error(error)
+
+      break
+    }
+
+    case 'PROFILE_FORM': {
+      const data: Partial<ProfileInput> = {
+        fullName: formData.get('fullName')?.toString(),
+        jobTitle: formData.get('jobTitle')?.toString(),
+        address: formData.get('address')?.toString(),
+        email: formData.get('email')?.toString(),
+        phone: formData.get('phone')?.toString(),
+      }
+
+      const { error } = await apiCall.postProfile(data, accessToken)
+
+      if (error) console.error(error)
+
+      break
+    }
+  }
+}
+
 const ResumesIndex = ({ loaderData }: Route.ComponentProps) => {
   const resumes = loaderData?.resumes
   const view = loaderData.view
@@ -54,7 +73,7 @@ const ResumesIndex = ({ loaderData }: Route.ComponentProps) => {
   return (
     <section className="px-5 flex justify-center">
       <div className="prose container mt-5">
-        <h2>
+        <h2 className="mt-2">
           {view === 'LIST' && 'Resumes'}
           {view === 'ID' && `Resume Title`}
           {view === 'NEW' && `New Resume`}
