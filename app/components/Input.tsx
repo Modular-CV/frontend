@@ -20,7 +20,9 @@ const Input = (props: Props) => {
       {label && inputProps.id && <label htmlFor={inputProps.id}>{label}</label>}
       <input
         {...inputProps}
-        className={(className ? className + ' ' : '') + inputStyle}
+        className={
+          (className ? className + ' ' : '') + (error ? 'error' : inputStyle)
+        }
       />
       <div className="relative">
         {error && (

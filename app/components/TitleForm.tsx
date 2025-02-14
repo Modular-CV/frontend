@@ -23,8 +23,6 @@ const TitleForm = ({ onValid }: Props) => {
     <form
       className="flex flex-col gap-5"
       onSubmit={handleSubmit(handleOnValid)}
-      name="title_form"
-      id="title_form"
     >
       <Input
         label="Title"
@@ -33,7 +31,7 @@ const TitleForm = ({ onValid }: Props) => {
           required: { value: true, message: 'Required' },
         })}
         error={errors.title?.message}
-        inputStyle={errors.title ? 'error' : 'primary'}
+        inputStyle="primary"
       />
       <Button buttonStyle="primary" className="w-full">
         Save

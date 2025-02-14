@@ -46,7 +46,7 @@ const LoginForm = ({ onValid }: Props) => {
           },
         })}
         error={errors.email?.message}
-        inputStyle={errors.email ? 'error' : 'primary'}
+        inputStyle="primary"
       />
       <Input
         data-cy="password"
@@ -58,7 +58,7 @@ const LoginForm = ({ onValid }: Props) => {
           required: { value: true, message: t('form.error.field.required') },
         })}
         error={errors.password?.message}
-        inputStyle={errors.password ? 'error' : 'primary'}
+        inputStyle="primary"
       />
       <Button
         data-cy="submit"
