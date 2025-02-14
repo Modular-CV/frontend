@@ -29,6 +29,13 @@ export const sleep = (time: number) =>
     setTimeout(resolve, time)
   })
 
+/**
+ * Retrieves the access and refresh tokens.
+ * If the access token is expired or invalid, this method will use the current refresh token to attempt to obtain new tokens.
+ *
+ * - When used in loaders or server action, `set-cookie` should be applied if tokens are refreshed.
+ * - When used in client action, `set-cookie` is not necessary, as the browser will handle cookie creation.
+ */
 export const getTokens = async (headers: Headers) => {
   const cookies = new Map<string, string>()
   let setCookie: string[] | undefined
